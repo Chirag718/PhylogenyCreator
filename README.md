@@ -80,15 +80,33 @@ Step 1: Use the DataCreation.ipynb notebook to create training examples. To run,
 
 Step 2: Use the Training.ipynb notebook to train the model. To run, fill the _WIDTH_ and _res_ variables. Then, fill the _folder_ and _bins_ variables to indicate where the training examples should be drawn from and the ranges the model will predict from. Finally, indicate the name the model will be saved by in the _od.save()_ function. 
 
-Step 3: Use the Deployment.ipynb notebook to deploy the model on breaks and fusions and construct the final phylogeny. To run, fill the  _WIDTH_, _res_, and _model_ fields. Then, fill the _folder_ variable to indicate the data the model will be deployed on. Finally, fill the _folder_results_ variable to indicate where the model's results will be saved.
+Step 3: Use the Deployment.ipynb notebook to deploy the model on breaks and fusions and construct the final phylogeny. To run, fill the  _WIDTH_, _res_, and _model_ variables. Then, fill the _folder_ variable to indicate the data the model will be deployed on. Finally, fill the _folder_results_ variable to indicate where the model's results will be saved.
 
-Step 4 (Optional): 
+Step 4 (Optional): Use DistanceMetrics.ipynb to assess model metrics against break distance. To run, fill the  _WIDTH_, _res_, and _model_ variables. Then, fill the _labels_ variable to indicate the ranges the model will predict from.
+
+Step 5 (Optional): Use Visualizer.ipynb to analyze model predictions on custom-built breaks and fusions. To run, fill the  _WIDTH_, _res_, and _model_ variables. Then, fill the _labels_ variable to indicate the ranges the model will predict from.
 
 **Pipeline: Binary Classifier**
 Step 1: Use the DataCreation.ipynb notebooks to create training examples. To run, fill the _max_distance_, _WIDTH_, _res_, and _ds_scale_ variables. Then, fill the _folder_ variable to indicate where the results should be saved.
 
 Step 2: Use the Training.ipynb notebooks to train the model. To run, fill the _WIDTH_, _res_, and _break_distance_ variables. Then, fill the _folder_ and _bins_ variables to indicate where the training examples should be drawn from and each kind of training data. Finally, indicate the name the model will be saved by in the _od.save()_ function. 
 
-Step 3: Use the Deployment.ipynb notebook to deploy the model on breaks and fusions and construct the final phylogeny. To run, fill the  _WIDTH_, _res_, and _model_ fields. Then, fill the _folder_ variable to indicate the data the model will be deployed on. Finally, fill the _folder_results_ variable to indicate where the model's results will be saved.
+Step 3: Use the Deployment.ipynb notebook to deploy the model on breaks and fusions and construct the final phylogeny. To run, fill the  _WIDTH_, _res_, and _model_ variables. Then, fill the _folder_ variable to indicate the data the model will be deployed on. Finally, fill the _folder_results_ variable to indicate where the model's results will be saved.
 
-**NOTE:** These notebooks are primarily designed to handle observed data, but can be easily modified to work with other types of data as well. Additionally, all notebooks contain functions to aid in the use of observed/expected (oe) data. 
+Step 4 (Optional): Use DistanceVsProbability.ipynb to assess model metrics against break distance. To run, fill the  _WIDTH_, _res_, and _model_ variables. 
+
+**NOTES:** 
+These notebooks are primarily designed to handle observed data but can be easily modified to work with other types of data as well. Additionally, all notebooks contain functions to aid in the use of observed/expected (oe) data. 
+The Distance Classifier predicts a matrix, while the Binary Classifier predicts a scalar. Accordingly, the functions used for each kind of classifier are slightly different but can be easily modified to work for the other. 
+The variables mentioned above must be consistent with each other. For example, if loading a training folder of examples with dimensions 40 by 40 and constructed at a resolution of 50 KB, WIDTH must be set to 40 and res to 50000. Another example is if loading a model to predict from 4 different ranges, labels must be set to those 4 ranges. 
+All variables mentioned above have default values set in the code
+
+**Data Structuring Format**
+**Training folder:** 
+A training folder will contain subfolders that are each named after the file the data in that folder was created from. Inside these subfolders, the data will take the name of each kind of training example the model will be trained on. An example for the Distance Classifier would be _2_to_5MB.npy_ and an example for the Binary Classifier would be _Type1_data.npy_. Additionally, the Binary Classifier will have labels for its data that will have names like _Type1_label.npy_
+
+**Deployment Folder:**
+A training folder will contain subfolders that are each named after the file the data in that folder was created from. Inside these subfolders, the data will take the name of each chromosome in the file (e.g. CM000377.2 npy)
+
+**Results Folder:**
+A results folder will contain the results of the hic files the model was deployed on with the output files being named the hic file followed by .bed (e.g. HIC1024_deep.hic.bed). These folders also contain _fusion_matrix.npy_, the fusion matrix constructed from the results of the model deployment on the hic files. Finally, the folder contains _phylogeny.dot_, which contains the final phylogeny.
