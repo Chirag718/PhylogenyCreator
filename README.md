@@ -8,52 +8,54 @@ This repository contains code to detect breaks and fusions in a HiC file through
 
 The Distance Classifier is the most successful model as of August 2024.
 
+## Guide
+
 This guide provides a breakdown of what each notebook provides. 
 
-**Distance Notebooks:**
+### Distance Notebooks
 
-DataCreation.ipynb:
-Constructs interchromosomal break matrices
-Constructs intrachromosomal break matrices with the break distance in a specific range
-Constructs no break matrices
-Saves all n by n matrices from a HiC file’s diagonal (n can be any number)
+#### DataCreation.ipynb:
+* Constructs interchromosomal break matrices
+* Constructs intrachromosomal break matrices with the break distance in a specific range
+* Constructs no break matrices
+* Saves all n by n matrices from a HiC file’s diagonal (n can be any number)
 
-Training.ipynb:
-Loading and preprocessing training, validation, and testing data
-Visualizing training examples
-Multiple models (including autoencoders) with custom loss functions and callbacks
-Evaluating the model with confusion matrices, accuracy, loss, etc.
-Visualizing correct and incorrect examples
-Saliency map on the model’s predictions
+#### Training.ipynb:
+* Loading and preprocessing training, validation, and testing data
+* Visualizing training examples
+* Multiple models (including autoencoders) with custom loss functions and callbacks
+* Evaluating the model with confusion matrices, accuracy, loss, etc.
+* Visualizing correct and incorrect examples
+* Saliency map on the model’s predictions
 
-Deployment.ipynb:
-Removing low-read bins from input matrices into the model
-Need to name folder and folder results
-Model deployment for breaks
-Filtering output bed files and combined handling of bed files to compare features across files
-Heatmaps of the presence of breaks and fusions in different files
-Building and visualizing fusions and predicting on them
-Determining most likely fusions
-Reconstructing phylogeny based on breaks and fusions
+#### Deployment.ipynb:
+* Removing low-read bins from input matrices into the model
+* Need to name folder and folder results
+* Model deployment for breaks
+* Filtering output bed files and combined handling of bed files to compare features across files
+* Heatmaps of the presence of breaks and fusions in different files
+* Building and visualizing fusions and predicting on them
+* Determining most likely fusions
+* Reconstructing phylogeny based on breaks and fusions
 
-Visualizer.ipynb:
+#### Visualizer.ipynb:
 Visualizing and predicting on HiC regions
 Visualizing and predicting on fusions after removing low-read bins
 
-DistanceMetrics.ipynb:
+#### DistanceMetrics.ipynb:
 Constructing interchromosomal break matrices
 Constructing intrachromosomal break matrices with a specific break distance
 Creating Distance vs. Probability graphs for the model
 Creating Distance vs. Saliency graphs for the model
 
-**Binary Classifier Notebooks:**
+### Binary Classifier Notebooks:
 
-DataCreation.ipynb: 
+#### DataCreation.ipynb: 
 Constructs interchromosomal break matrices with specific modifications possible
 Constructs intrachromosomal break matrices with the break distance in a specific range with specific modifications possible
 Constructs no break matrices
 
-Training.ipynb: 
+#### Training.ipynb: 
 Loading and preprocessing training, validation, and testing data
 Visualizing training examples
 Train models with custom loss functions and callbacks
@@ -61,7 +63,7 @@ Evaluating the model with confusion matrices, accuracy, loss, etc.
 ROC curves
 Visualizing correct and incorrect examples
 
-Deployment.ipynb:
+#### Deployment.ipynb:
 Model deployment for break
 Need to name folder and folder results
 Filtering output bed files and combined handling of bed files to compare features across files
@@ -71,7 +73,7 @@ Building and visualizing fusions and predicting on them
 Determining most likely fusions
 Reconstructing phylogeny based on breaks and fusions
 
-DistanceVsProbability.ipynb:
+#### DistanceVsProbability.ipynb:
 Constructing interchromosomal break matrices
 Constructing intrachromosomal break matrices with a specific break distance
 Creating Distance vs. Probability graphs for the model
