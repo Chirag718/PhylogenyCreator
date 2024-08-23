@@ -3,6 +3,7 @@
 This repository contains code to detect breaks and fusions in a HiC file through machine learning, and use this feature data to reconstruct phylogenetic trees. There were two different kinds of models developed for this task:
 
 **Distance Classifier:** This model predicted the range of the distance between the regions in the center of its input data (e.g. Between 2 and 5 MB)
+
 **Binary Classifier:** This model predicted a probability there was a break between the regions in the center of its input data.
 
 The Distance Classifier is the most successful model as of August 2024.
