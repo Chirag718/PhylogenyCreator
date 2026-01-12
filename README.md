@@ -6,7 +6,7 @@ This repository contains code to detect breaks and fusions in a HiC file through
 
 **Binary Classifier:** This model predicted a probability there was a break between the regions in the center of its input data.
 
-The Distance Classifier is the most successful model as of August 2024.
+The Distance Classifier is the most successful model as of September 2024.
 
 ## Guide
 This guide provides a breakdown of what each notebook provides. 
